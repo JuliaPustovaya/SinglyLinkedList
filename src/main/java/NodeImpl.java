@@ -1,8 +1,8 @@
 public class NodeImpl {
-	int sizeListNodes = 0;
-	Node listNodes = new Node();
+	private int sizeListNodes = 0;
+	private Node listNodes = new Node();
 
-	public void put(int value) {
+	public void addBack(int value) {
 		if (listNodes.getValue() == null) {
 			listNodes.setValue(value);
 			listNodes.setNext(null);
@@ -17,7 +17,33 @@ public class NodeImpl {
 		}
 	}
 
+	public void addFront(int value) {
+		Node newNode = new Node();
+		newNode.setValue(value);
+		newNode.setNext(listNodes);
+		listNodes=newNode;
+
+
+
+		
+
+		
+
+	}
+
+	public void removeByValue(int value) {
+		if (size() > 0) {
+			Node currentNode = listNodes;
+			while (currentNode.getNext().getValue() != value) {
+				currentNode = currentNode.getNext();
+			}
+			Node nodePrev = currentNode.getNext().getNext();
+			currentNode.setNext(nodePrev);
+		}
+	}
+
 	public int size() {
+		sizeListNodes = 0;
 		Node node;
 		node = listNodes;
 		while (node != null) {
@@ -25,5 +51,14 @@ public class NodeImpl {
 			node = node.getNext();
 		}
 		return sizeListNodes;
+	}
+
+	public void representOnScreen() {
+		Node currNode= listNodes;
+		for (int i = 0; i <size() ; currNode=currNode.getNext()) {
+			System.out.print(currNode.getValue()+ " ");
+			i++;
+
+		}
 	}
 }
