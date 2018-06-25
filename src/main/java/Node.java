@@ -1,13 +1,13 @@
-public class Node {
-	private  Integer value;
+public class Node<V> {
+	private  V value;
 	private  Node next;
 
 
-	public Integer getValue() {
+	public V getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(V value) {
 		this.value = value;
 	}
 
